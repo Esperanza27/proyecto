@@ -115,7 +115,7 @@ const Registration = () => {
         statusErrMsg={statusErrMgs}
         onChange={(v) => setTelephone(v)}
       />
-      {/* mail */}
+      {/* email */}
       <Input
         placeholder={eMail}
         label={"Email"}
