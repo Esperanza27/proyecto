@@ -1,5 +1,19 @@
 import { useState, useCallback } from "react";
 
+// defines
+import d from "../../common/defines";
+import {
+  FNAME_LABEL,
+  LNAME_LABEL,
+  PHONE_LABEL,
+  EMAIL_LABEL,
+  INPUT_TEXT,
+  INPUT_NUMBER,
+  FNAME_PLACEHOLDER,
+  LNAME_PLACEHOLDER,
+  PHONE_PLACEHOLDER,
+  EMAIL_PLACEHOLDER,
+} from "./Registration.defines";
 // components
 import Input from "../../common/components/input";
 
@@ -7,130 +21,135 @@ import Input from "../../common/components/input";
 import "./Registration.css";
 
 // utils
-import { setNameValidated } from "./utils/validations";
+import {
+  checkValidationInputs,
+  checkValidationButton,
+} from "./utils/validations";
 
 const Registration = () => {
-  const [fname, setFname] = useState("es. pippo");
-  const [lname, setLname] = useState("es. llontop");
-  const [pNumber, setPNumber] = useState("es. 3347451378");
-  const [eMail, setEMail] = useState("es. esllobus_15_27@hotmail.com");
+  // input
+  const [fName, setFName] = useState("");
+  const [lName, setLName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [eMail, setEMail] = useState("");
 
-  const [statusErr, setStatusErr] = useState(false);
-  const [statusErrInput, setStatusErrInput] = useState("");
-  const [statusErrMgs, setStatusErrMsg] = useState(0);
+  //error
+  const [error, setError] = useState({
+    [FNAME_LABEL]: { status: false, type: 0 },
+    [LNAME_LABEL]: { status: false, type: 0 },
+    [PHONE_LABEL]: { status: false, type: 0 },
+    [EMAIL_LABEL]: { status: false, type: 0 },
+  });
+
+  console.log(error);
 
   const setFirstName = useCallback((v) => {
-    setNameValidated(
+    checkValidationInputs(
       v,
-      "es. esperanza",
-      "fName",
-      setFname,
-      setStatusErr,
-      setStatusErrMsg,
-      setStatusErrInput,
-      /^[a-z]+$/i
+      FNAME_PLACEHOLDER,
+      FNAME_LABEL,
+      setFName,
+      d.TEXT_VALIDATION_REX,
+      setError
     );
   }, []);
 
   const setLastName = useCallback((v) => {
-    setNameValidated(
+    checkValidationInputs(
       v,
-      "es. llontop",
-      "lname",
-      setLname,
-      setStatusErr,
-      setStatusErrMsg,
-      setStatusErrInput,
-      /^[a-z]+$/i
+      LNAME_PLACEHOLDER,
+      LNAME_LABEL,
+      setLName,
+      d.TEXT_VALIDATION_REX,
+      setError
     );
   }, []);
 
   const setTelephone = useCallback((v) => {
-    setNameValidated(
+    checkValidationInputs(
       v,
-      "es. 3347451378",
-      "pNumber",
-      setPNumber,
-      setStatusErr,
-      setStatusErrMsg,
-      setStatusErrInput
+      PHONE_PLACEHOLDER,
+      PHONE_LABEL,
+      setPhone,
+      d.TELEPHONE_VALIDATION_REX,
+      setError
     );
   }, []);
 
   const setEmail = useCallback((v) => {
-    setNameValidated(
+    checkValidationInputs(
       v,
-      "es. esllobus_15_27@hotmail.com",
-      "eMail",
+      EMAIL_PLACEHOLDER,
+      EMAIL_LABEL,
       setEMail,
-      setStatusErr,
-      setStatusErrMsg,
-      setStatusErrInput,
-      /\w+@\w+\.\w{2,4}/i
+      d.EMAIL_VALIDATION_REX,
+      setError
     );
   }, []);
 
   const sub = (e) => {
-    console.log(fname);
-    console.log(lname);
-    console.log(pNumber);
+    console.log(fName);
+    console.log(lName);
+    console.log(phone);
     console.log(eMail);
     e.preventDefault();
   };
 
   return (
-    <form action="/action_page.php">
-      {/* name */}
-      <Input
-        placeholder={fname}
-        label={"First name"}
-        inputType={"text"}
-        forLabel={"fName"}
-        idLabel={"fName"}
-        statusErr={statusErr && statusErrInput === "fName"}
-        statusErrMsg={statusErrMgs}
-        onChange={(v) => setFirstName(v)}
-      />
+    <div className="registration-area">
+      <form action="/action_page.php">
+        {/* name */}
+        <Input
+          placeholder={FNAME_PLACEHOLDER}
+          label={"First name"}
+          inputType={INPUT_TEXT}
+          forLabel={FNAME_LABEL}
+          idLabel={FNAME_LABEL}
+          error={error}
+          onChange={(v) => setFirstName(v)}
+        />
 
-      {/* surname */}
-      <Input
-        placeholder={lname}
-        label={"Last name"}
-        inputType={"text"}
-        forLabel={"lname"}
-        idLabel={"lname"}
-        statusErr={statusErr && statusErrInput === "lname"}
-        statusErrMsg={statusErrMgs}
-        onChange={(v) => setLastName(v)}
-      />
+        {/* surname */}
+        <Input
+          placeholder={LNAME_PLACEHOLDER}
+          label={"Last name"}
+          inputType={INPUT_TEXT}
+          forLabel={LNAME_LABEL}
+          idLabel={LNAME_LABEL}
+          error={error}
+          onChange={(v) => setLastName(v)}
+        />
 
-      {/* number*/}
-      <Input
-        placeholder={pNumber}
-        label={"Telephone"}
-        inputType={"number"}
-        forLabel={"pNumber"}
-        idLabel={"pNumber"}
-        statusErr={statusErr && statusErrInput === "pNumber"}
-        statusErrMsg={statusErrMgs}
-        onChange={(v) => setTelephone(v)}
-      />
-      {/* mail */}
-      <Input
-        placeholder={eMail}
-        label={"Email"}
-        inputType={"text"}
-        forLabel={"eMail"}
-        idLabel={"eMail"}
-        statusErr={statusErr && statusErrInput === "eMail"}
-        statusErrMsg={statusErrMgs}
-        onChange={(v) => setEmail(v)}
-      />
-      <br />
-      <br />
-      <input type="submit" value="Submit" onClick={(e) => sub(e)} />
-    </form>
+        {/* number*/}
+        <Input
+          placeholder={PHONE_PLACEHOLDER}
+          label={"Telephone"}
+          inputType={INPUT_NUMBER}
+          forLabel={PHONE_LABEL}
+          idLabel={PHONE_LABEL}
+          error={error}
+          onChange={(v) => setTelephone(v)}
+        />
+        {/* email */}
+        <Input
+          placeholder={EMAIL_PLACEHOLDER}
+          label={"Email"}
+          inputType={INPUT_TEXT}
+          forLabel={EMAIL_LABEL}
+          idLabel={EMAIL_LABEL}
+          error={error}
+          onChange={(v) => setEmail(v)}
+        />
+        <br />
+        <br />
+        <input
+          type="submit"
+          value="Submit"
+          onClick={(e) => sub(e)}
+          disabled={!checkValidationButton(error, fName, lName, phone, eMail)}
+        />
+      </form>
+    </div>
   );
 };
 export default Registration;
-// posta... /\w+@\w+\.\w{2,4}/i

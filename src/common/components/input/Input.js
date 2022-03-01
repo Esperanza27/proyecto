@@ -8,10 +8,10 @@ const Input = ({
   inputType = "",
   forLabel = "",
   idLabel = "",
-  statusErr = false,
-  statusErrMsg = 0,
+  error = {},
   onChange,
 }) => {
+  console.log("input: ", error);
   return (
     <div>
       <label for={forLabel}>{label}</label>
@@ -23,10 +23,10 @@ const Input = ({
           placeholder={placeholder}
           onChange={(v) => onChange(v.target.value)}
         />
-        {statusErr && <BoxError />}
+        {error[idLabel].status && <BoxError />}
       </div>
 
-      {statusErr && <MsgError statusErrMsg={statusErrMsg} />}
+      {error[idLabel].status && <MsgError statusErrMsg={error[idLabel].type} />}
     </div>
   );
 };
