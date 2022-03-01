@@ -3,6 +3,8 @@ import {
   LNAME_LABEL,
   PHONE_LABEL,
   EMAIL_LABEL,
+  DONE,
+  ERROR,
 } from "../Registration.defines";
 
 export const checkValidationInputs = (
@@ -18,7 +20,7 @@ export const checkValidationInputs = (
     setValue(v);
     setError((cs) => {
       const clone = {};
-      cs[idLabel].status = false;
+      cs[idLabel].status = DONE;
       cs[idLabel].type = 0;
       return cs;
     });
@@ -29,7 +31,7 @@ export const checkValidationInputs = (
       return {
         ...cs,
         [idLabel]: {
-          status: (cs[idLabel].status = true),
+          status: (cs[idLabel].status = ERROR),
           type: (cs[idLabel].type = 0),
         },
       };
@@ -40,7 +42,7 @@ export const checkValidationInputs = (
       return {
         ...cs,
         [idLabel]: {
-          status: (cs[idLabel].status = true),
+          status: (cs[idLabel].status = ERROR),
           type: (cs[idLabel].type = 1),
         },
       };
@@ -50,10 +52,10 @@ export const checkValidationInputs = (
 
 export const checkValidationButton = (s, fName, lName, phone, eMail) => {
   return (
-    !s[FNAME_LABEL]?.status &&
-    !s[LNAME_LABEL]?.status &&
-    !s[PHONE_LABEL]?.status &&
-    !s[EMAIL_LABEL]?.status &&
+    s[FNAME_LABEL]?.status === DONE &&
+    s[LNAME_LABEL]?.status === DONE &&
+    s[PHONE_LABEL]?.status === DONE &&
+    s[EMAIL_LABEL]?.status === DONE &&
     fName !== "" &&
     lName !== "" &&
     phone !== "" &&

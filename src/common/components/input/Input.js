@@ -1,4 +1,5 @@
 // components
+import { INIT } from "../../../pages/Registration/Registration.defines";
 import BoxError from "./components/boxError";
 import MsgError from "./components/msgError";
 
@@ -23,10 +24,10 @@ const Input = ({
           placeholder={placeholder}
           onChange={(v) => onChange(v.target.value)}
         />
-        {error[idLabel].status && <BoxError />}
+        {error[idLabel].status !== INIT && <BoxError status={error[idLabel].status}/>}
       </div>
 
-      {error[idLabel].status && <MsgError statusErrMsg={error[idLabel].type} />}
+      {error[idLabel].status !== INIT && <MsgError statusErrMsg={error[idLabel].type} />}
     </div>
   );
 };

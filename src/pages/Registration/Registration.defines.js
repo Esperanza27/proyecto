@@ -5,12 +5,16 @@ export const PHONE_PLACEHOLDER = "es. 3347451378";
 export const EMAIL_PLACEHOLDER = "es. esllobus_15_27@hotmail.com";
 
 // id label
-export const FNAME_LABEL = "fName"; 
-export const LNAME_LABEL = "lName"; 
-export const PHONE_LABEL = "phone"; 
-export const EMAIL_LABEL = "eMail"; 
+export const FNAME_LABEL = "fName";
+export const LNAME_LABEL = "lName";
+export const PHONE_LABEL = "phone";
+export const EMAIL_LABEL = "eMail";
 
 // input type
 export const INPUT_TEXT = "text";
 export const INPUT_NUMBER = "number";
 
+// error status
+export const INIT = 0;
+export const DONE = 1;
+export const ERROR = -1;

@@ -13,6 +13,9 @@ import {
   LNAME_PLACEHOLDER,
   PHONE_PLACEHOLDER,
   EMAIL_PLACEHOLDER,
+  DONE,
+  INIT,
+  ERROR,
 } from "./Registration.defines";
 // components
 import Input from "../../common/components/input";
@@ -35,10 +38,10 @@ const Registration = () => {
 
   //error
   const [error, setError] = useState({
-    [FNAME_LABEL]: { status: false, type: 0 },
-    [LNAME_LABEL]: { status: false, type: 0 },
-    [PHONE_LABEL]: { status: false, type: 0 },
-    [EMAIL_LABEL]: { status: false, type: 0 },
+    [FNAME_LABEL]: { status: INIT, type: 0 },
+    [LNAME_LABEL]: { status: INIT, type: 0 },
+    [PHONE_LABEL]: { status: INIT, type: 0 },
+    [EMAIL_LABEL]: { status: INIT, type: 0 },
   });
 
   console.log(error);
