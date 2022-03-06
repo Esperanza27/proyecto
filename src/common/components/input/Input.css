@@ -1,0 +1,9 @@
+.input-container {
+    display: flex;
+}
+
+.input-container .input {
+    width: 270px;
+    height: 32px;
+    font-size: 20px;
+}

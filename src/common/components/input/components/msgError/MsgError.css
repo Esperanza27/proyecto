@@ -1,35 +1,9 @@
 .msg-error-container {
-  height: 10px;
+  height: 30px;
+  width: 177px;
 }
 
-.msg-error-container .pippo.pluto u .paperino {
-  background-color: aqua;
-}
-.msg-error-container .espe {
-}
-
-.msg-error-container {
-  .espe {
-
-  }
-  .pippo,
-  .pluto {
-    u {
-      .paperino {
-        background-color: aqua;
-      }
-    }
-  }
-}
-
-.msg-error-container .msg-error-container-modal {
+.msg-error-container .msg-error {
   margin: 0;
-}
-.msg-error-container .msg-error-container-button {
-    margin: 0;
-}
-
-.msg-error-container {
-    &-modal {}
-    &-button {}
+  color: red;
 }

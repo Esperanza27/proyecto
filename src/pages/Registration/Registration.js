@@ -13,15 +13,13 @@ import {
   LNAME_PLACEHOLDER,
   PHONE_PLACEHOLDER,
   EMAIL_PLACEHOLDER,
-  DONE,
   INIT,
-  ERROR,
 } from "./Registration.defines";
 // components
 import Input from "../../common/components/input";
 
 // style
-import "./Registration.css";
+import "./Registration.scss";
 
 // utils
 import {
@@ -43,8 +41,6 @@ const Registration = () => {
     [PHONE_LABEL]: { status: INIT, type: 0 },
     [EMAIL_LABEL]: { status: INIT, type: 0 },
   });
-
-  console.log(error);
 
   const setFirstName = useCallback((v) => {
     checkValidationInputs(
@@ -99,8 +95,9 @@ const Registration = () => {
   };
 
   return (
-    <div className="registration-area">
-      <form action="/action_page.php">
+    <div className="registration-container">
+
+      <form>
         {/* name */}
         <Input
           placeholder={FNAME_PLACEHOLDER}
@@ -143,14 +140,16 @@ const Registration = () => {
           error={error}
           onChange={(v) => setEmail(v)}
         />
-        <br />
-        <br />
-        <input
-          type="submit"
-          value="Submit"
-          onClick={(e) => sub(e)}
-          disabled={!checkValidationButton(error, fName, lName, phone, eMail)}
-        />
+        <div className="registration-submit">
+          <input
+            className={`registration-input ${!checkValidationButton(error, fName, lName, phone, eMail) ? "registration-input-disabled" : ""}`}
+            type="submit"
+            value="Submit"
+            onClick={(e) => sub(e)}
+            disabled={!checkValidationButton(error, fName, lName, phone, eMail)}
+          />
+        </div>
+
       </form>
     </div>
   );

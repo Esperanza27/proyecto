@@ -1,0 +1,146 @@
+.registration-container {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  top: 48%;
+  left: 50%;
+  width: 30em;
+  height: 28em;
+  margin-top: -9em;
+  margin-left: -15em;
+  border: 1px solid #ccc;
+  background-color: #f3f3f3;
+
+  .input-box {
+    display: flex;
+  }
+
+  .registration-submit {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+
+    .registration-input {
+      width: 80px;
+      height: 35px;
+      font-size: 15px;
+      background-color: #4bff92;
+      border: 1px #2ea55d solid;
+      border-radius: 3px;
+
+      &:hover {
+        background-color: #9bf5bd;
+        border: 2px #2ea55d solid;
+      }
+    }
+
+    .registration-input-disabled {
+      opacity: 0.5;
+
+      &:hover {
+        background-color: #4bff92;
+        border: 1px #2ea55d solid;
+      }
+    }
+
+  }
+}
+
+
+/*.registration-container {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    top: 48%;
+    left: 50%;
+    width: 30em;
+    height: 28em;
+    margin-top: -9em;
+    margin-left: -15em;
+    border: 1px solid #ccc;
+    background-color: #f3f3f3;
+
+}
+
+.registration-container .input-box {
+    display: flex;
+}
+
+.registration-container .registration-submit {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+.registration-container .registration-submit .registration-input {
+    width: 80px;
+    height: 35px;
+    font-size: 15px;
+    background-color: #4bff92;
+    border: 1px #2ea55d solid;
+    border-radius: 3px;
+}
+
+.registration-container .registration-submit .registration-input:hover {
+    background-color: #9bf5bd;
+    border: 2px #2ea55d solid;
+}
+
+.registration-container .registration-submit .registration-input-disabled {
+    opacity: 0.5;
+}
+
+.registration-container .registration-submit .registration-input-disabled:hover {
+    background-color: #4bff92;
+    border: 1px #2ea55d solid;
+}*//*.registration-container {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    top: 48%;
+    left: 50%;
+    width: 30em;
+    height: 28em;
+    margin-top: -9em;
+    margin-left: -15em;
+    border: 1px solid #ccc;
+    background-color: #f3f3f3;
+
+}
+
+.registration-container .input-box {
+    display: flex;
+}
+
+.registration-container .registration-submit {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+.registration-container .registration-submit .registration-input {
+    width: 80px;
+    height: 35px;
+    font-size: 15px;
+    background-color: #4bff92;
+    border: 1px #2ea55d solid;
+    border-radius: 3px;
+}
+
+.registration-container .registration-submit .registration-input:hover {
+    background-color: #9bf5bd;
+    border: 2px #2ea55d solid;
+}
+
+.registration-container .registration-submit .registration-input-disabled {
+    opacity: 0.5;
+}
+
+.registration-container .registration-submit .registration-input-disabled:hover {
+    background-color: #4bff92;
+    border: 1px #2ea55d solid;
+}*/
+

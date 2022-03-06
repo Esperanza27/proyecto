@@ -1,7 +1,12 @@
 // components
-import { INIT } from "../../../pages/Registration/Registration.defines";
 import BoxValidation from "./components/boxValidation";
 import MsgError from "./components/msgError";
+
+// defines
+import { DONE, INIT } from "../../../pages/Registration/Registration.defines";
+
+// styles
+import "./Input.css";
 
 const Input = ({
   placeholder = "",
@@ -12,22 +17,23 @@ const Input = ({
   error = {},
   onChange,
 }) => {
-  console.log("input: ", error);
   return (
     <div>
       <label for={forLabel}>{label}</label>
       <br />
-      <div className="input-box">
+      <div className="input-container">
         <input
+          className="input"
           type={inputType}
           id={idLabel}
           placeholder={placeholder}
           onChange={(v) => onChange(v.target.value)}
         />
-        {error[idLabel].status !== INIT && <BoxValidation status={error[idLabel].status}/>}
+        <BoxValidation status={error[idLabel].status} />
       </div>
 
-      {error[idLabel].status !== INIT && <MsgError statusErrMsg={error[idLabel].type} />}
+      <MsgError statusErrMsg={error[idLabel].status !== INIT && error[idLabel].status !== DONE}
+                typeErrMsg={error[idLabel].type} />
     </div>
   );
 };

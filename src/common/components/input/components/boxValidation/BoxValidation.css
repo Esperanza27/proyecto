@@ -1,18 +1,9 @@
-.box {
-  width: 22px;
-  height: 22px;
-  border-radius: 11px;
-  margin-left: 5px;
+.box-validation-container {
+    width: 38px;
+    height: 38px;
 }
 
-.done {
-    background-color: greenyellow;
-}
-
-.error {
-    background-color: red;
-}
-.check-icon{
-  width: 20px ;
-  height: 20px;
+.box-validation-container .box-validation-icon {
+    width: 100%;
+    height: 100%;
 }
