@@ -17,7 +17,7 @@ import {
 } from "./Registration.defines";
 // components
 import Input from "../../common/components/input";
-
+import Select from "../../common/components/select";
 // style
 import "./Registration.scss";
 
@@ -96,7 +96,6 @@ const Registration = () => {
 
   return (
     <div className="registration-container">
-
       <form>
         {/* name */}
         <Input
@@ -140,18 +139,29 @@ const Registration = () => {
           error={error}
           onChange={(v) => setEmail(v)}
         />
+        {/* city list */}
+        <Select list={cityData} />
         <div className="registration-submit">
           <input
-            className={`registration-input ${!checkValidationButton(error, fName, lName, phone, eMail) ? "registration-input-disabled" : ""}`}
+            className={`registration-input ${
+              !checkValidationButton(error, fName, lName, phone, eMail)
+                ? "registration-input-disabled"
+                : ""
+            }`}
             type="submit"
             value="Submit"
             onClick={(e) => sub(e)}
             disabled={!checkValidationButton(error, fName, lName, phone, eMail)}
           />
         </div>
-
       </form>
     </div>
   );
 };
 export default Registration;
+
+const cityData = [
+  { label: "Roma", value: "roma" },
+  { label: "Milano", value: "milano" },
+  { label: "Napoli", value: "napoli" },
+];
