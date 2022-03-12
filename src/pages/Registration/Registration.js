@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 // defines
 import d from "../../common/defines";
@@ -18,7 +18,7 @@ import {
   PASSWORD_PLACEHOLDER,
   CONFIRM_PASSWORD_PLACEHOLDER,
   INIT,
-  INPUT_PASSWORD,
+  INPUT_PASSWORD, DONE, ERROR,
 } from "./Registration.defines";
 // components
 import Input from "../../common/components/input";
@@ -132,11 +132,13 @@ const Registration = () => {
   }, []);
 
   const setPsw = useCallback((v) => {
+
     checkValidationInputs(
       {
         currentValue: v,
         placeholder: PASSWORD_PLACEHOLDER,
         setValue: (val) => setPassword(val),
+
         rex: d.PASSWORD_VALIDATION_REX,
         setError: (err) => setError((cs) => {
           return {
@@ -152,6 +154,9 @@ const Registration = () => {
   }, []);
 
   const setConfirmPsw = useCallback((v) => {
+    console.log(v);
+    console.log(password);
+    console.log(v !== password);
     checkValidationInputs(
       {
         currentValue: v,
@@ -162,20 +167,49 @@ const Registration = () => {
           return {
             ...cs,
             [CONFIRM_PASSWORD_LABEL]: {
-              status: (cs[CONFIRM_PASSWORD_LABEL].status = err?.status),
-              type: (cs[CONFIRM_PASSWORD_LABEL].type = err?.type),
+              status: (cs[CONFIRM_PASSWORD_LABEL].status = err?.status === DONE && error[PASSWORD_LABEL].status === DONE && v === password ? DONE : ERROR),
+              type: (cs[CONFIRM_PASSWORD_LABEL].type = v !== password && 1),
             },
           };
         })
       }
     );
-  }, []);
+  }, [password]);
+
+  useEffect(() => {
+    console.log(password !== confirmPassword);
+    if (password !== confirmPassword || error[PASSWORD_LABEL].status === ERROR) {
+      setError(((cs) => {
+          return {
+            ...cs,
+            [CONFIRM_PASSWORD_LABEL]: {
+              status: (cs[CONFIRM_PASSWORD_LABEL].status = ERROR),
+              type: 1,
+            },
+          };
+        })
+      )
+    } else {
+      setError(((cs) => {
+          return {
+            ...cs,
+            [CONFIRM_PASSWORD_LABEL]: {
+              status: (cs[CONFIRM_PASSWORD_LABEL].status = DONE),
+              type: 0,
+            },
+          };
+        })
+      )
+    }
+  }, [password, confirmPassword, error[PASSWORD_LABEL].status]);
 
   const sub = (e) => {
     console.log(fName);
     console.log(lName);
     console.log(phone);
     console.log(eMail);
+    console.log(password);
+    console.log(confirmPassword);
     e.preventDefault();
   };
 
