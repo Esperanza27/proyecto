@@ -1,0 +1,12 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+  &-validation {
+    display: flex;
+    .input {
+      width: 270px;
+      height: 32px;
+      font-size: 20px;
+    }
+  }
+}

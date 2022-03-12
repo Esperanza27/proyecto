@@ -7,13 +7,18 @@ import {
   LNAME_LABEL,
   PHONE_LABEL,
   EMAIL_LABEL,
+  PASSWORD_LABEL,
+  CONFIRM_PASSWORD_LABEL,
   INPUT_TEXT,
   INPUT_NUMBER,
   FNAME_PLACEHOLDER,
   LNAME_PLACEHOLDER,
   PHONE_PLACEHOLDER,
   EMAIL_PLACEHOLDER,
+  PASSWORD_PLACEHOLDER,
+  CONFIRM_PASSWORD_PLACEHOLDER,
   INIT,
+  INPUT_PASSWORD,
 } from "./Registration.defines";
 // components
 import Input from "../../common/components/input";
@@ -33,6 +38,8 @@ const Registration = () => {
   const [lName, setLName] = useState("");
   const [phone, setPhone] = useState("");
   const [eMail, setEMail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   //error
   const [error, setError] = useState({
@@ -40,6 +47,8 @@ const Registration = () => {
     [LNAME_LABEL]: { status: INIT, type: 0 },
     [PHONE_LABEL]: { status: INIT, type: 0 },
     [EMAIL_LABEL]: { status: INIT, type: 0 },
+    [PASSWORD_LABEL]: { status: INIT, type: 0 },
+    [CONFIRM_PASSWORD_LABEL]: { status: INIT, type: 0 },
   });
 
   const setFirstName = useCallback((v) => {
@@ -86,6 +95,28 @@ const Registration = () => {
     );
   }, []);
 
+  const setPsw = useCallback((v) => {
+    checkValidationInputs(
+      v,
+      PASSWORD_PLACEHOLDER,
+      PASSWORD_LABEL,
+      setPassword,
+      d.PASSWORD_VALIDATION_REX,
+      setError
+    );
+  }, []);
+
+  const setConfirmPsw = useCallback((v) => {
+    checkValidationInputs(
+      v,
+      CONFIRM_PASSWORD_PLACEHOLDER,
+      CONFIRM_PASSWORD_LABEL,
+      setConfirmPassword,
+      d.PASSWORD_VALIDATION_REX,
+      setError
+    );
+  }, []);
+
   const sub = (e) => {
     console.log(fName);
     console.log(lName);
@@ -118,6 +149,8 @@ const Registration = () => {
           error={error}
           onChange={(v) => setLastName(v)}
         />
+        {/* city list */}
+        <Select list={cityData} label={"City"} />
 
         {/* number*/}
         <Input
@@ -139,19 +172,38 @@ const Registration = () => {
           error={error}
           onChange={(v) => setEmail(v)}
         />
-        {/* city list */}
-        <Select list={cityData} />
+         {/* password */}
+         <Input
+          placeholder={PASSWORD_PLACEHOLDER}
+          label={"Password"}
+          inputType={INPUT_PASSWORD}
+          forLabel={PASSWORD_LABEL}
+          idLabel={PASSWORD_LABEL}
+          error={error}
+          onChange={(v) => setPsw(v)}
+        />
+        {/* confirm password */}
+        <Input
+          placeholder={CONFIRM_PASSWORD_PLACEHOLDER}
+          label={"Confirm Password"}
+          inputType={INPUT_PASSWORD}
+          forLabel={CONFIRM_PASSWORD_LABEL}
+          idLabel={CONFIRM_PASSWORD_LABEL}
+          error={error}
+          onChange={(v) => setConfirmPsw(v)}
+        />
+        
         <div className="registration-submit">
           <input
             className={`registration-input ${
-              !checkValidationButton(error, fName, lName, phone, eMail)
+              !checkValidationButton(error, fName, lName, phone, eMail, password, confirmPassword)
                 ? "registration-input-disabled"
                 : ""
             }`}
             type="submit"
             value="Submit"
             onClick={(e) => sub(e)}
-            disabled={!checkValidationButton(error, fName, lName, phone, eMail)}
+            disabled={!checkValidationButton(error, fName, lName, phone, eMail, password, confirmPassword)}
           />
         </div>
       </form>

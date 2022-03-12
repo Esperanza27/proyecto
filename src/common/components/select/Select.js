@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import "./Select.scss";
 
-const Select = ({ list }) => {
+const Select = ({ list, label }) => {
   const [selectValue, setSelectValue] = useState("");
 
   const getSelectValue = (value) => {
@@ -10,10 +10,11 @@ const Select = ({ list }) => {
     console.log(value);
   };
   return (
-    <div>
+    <div  className="select-container">
+      <label>{label}</label>
       <select
         value={selectValue}
-        className="select-container"
+        className="select"
         onChange={(e) => getSelectValue(e.target.value)}
       >
         <option value="" disabled selected>

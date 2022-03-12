@@ -1,5 +1,10 @@
-.select-container{
+.select-container {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+  .select {
     width: 277px;
     height: 38px;
     font-size: 20px;
-}       
+  }
+}

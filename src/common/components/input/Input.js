@@ -6,7 +6,7 @@ import MsgError from "./components/msgError";
 import { DONE, INIT } from "../../../pages/Registration/Registration.defines";
 
 // styles
-import "./Input.css";
+import "./Input.scss";
 
 const Input = ({
   placeholder = "",
@@ -18,10 +18,9 @@ const Input = ({
   onChange,
 }) => {
   return (
-    <div>
+    <div className="input-container">
       <label for={forLabel}>{label}</label>
-      <br />
-      <div className="input-container">
+      <div className="input-container-validation" >
         <input
           className="input"
           type={inputType}

@@ -3,6 +3,8 @@ import {
   LNAME_LABEL,
   PHONE_LABEL,
   EMAIL_LABEL,
+  PASSWORD_LABEL,
+  CONFIRM_PASSWORD_LABEL,
   DONE,
   ERROR,
 } from "../Registration.defines";
@@ -50,15 +52,27 @@ export const checkValidationInputs = (
   }
 };
 
-export const checkValidationButton = (s, fName, lName, phone, eMail) => {
+export const checkValidationButton = (
+  s,
+  fName,
+  lName,
+  phone,
+  eMail,
+  password,
+  confirmPassword
+) => {
   return (
     s[FNAME_LABEL]?.status === DONE &&
     s[LNAME_LABEL]?.status === DONE &&
     s[PHONE_LABEL]?.status === DONE &&
     s[EMAIL_LABEL]?.status === DONE &&
+    s[PASSWORD_LABEL]?.status === DONE &&
+    s[CONFIRM_PASSWORD_LABEL]?.status === DONE &&
     fName !== "" &&
     lName !== "" &&
     phone !== "" &&
-    eMail !== ""
+    eMail !== "" &&
+    password !== "" &&
+    confirmPassword !== ""
   );
 };
