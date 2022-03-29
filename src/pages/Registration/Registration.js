@@ -23,6 +23,7 @@ import {
 // components
 import Input from "../../common/components/input";
 import Select from "../../common/components/select";
+import Accordion from "../../common/components/accordion/Accordion";
 // style
 import "./Registration.scss";
 
@@ -32,7 +33,12 @@ import {
   checkValidationButton,
 } from "./utils/validations";
 
+// pasta
+import PiattoDiPasta from "../../common/utils/PiattoDiPasta";
+
 const Registration = () => {
+  PiattoDiPasta();
+
   // input
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
@@ -172,8 +178,8 @@ const Registration = () => {
           error={error}
           onChange={(v) => setEmail(v)}
         />
-         {/* password */}
-         <Input
+        {/* password */}
+        <Input
           placeholder={PASSWORD_PLACEHOLDER}
           label={"Password"}
           inputType={INPUT_PASSWORD}
@@ -192,18 +198,37 @@ const Registration = () => {
           error={error}
           onChange={(v) => setConfirmPsw(v)}
         />
-        
+        {/* ACCORDION */}
+        <Accordion />
         <div className="registration-submit">
           <input
             className={`registration-input ${
-              !checkValidationButton(error, fName, lName, phone, eMail, password, confirmPassword)
+              !checkValidationButton(
+                error,
+                fName,
+                lName,
+                phone,
+                eMail,
+                password,
+                confirmPassword
+              )
                 ? "registration-input-disabled"
                 : ""
             }`}
             type="submit"
             value="Submit"
             onClick={(e) => sub(e)}
-            disabled={!checkValidationButton(error, fName, lName, phone, eMail, password, confirmPassword)}
+            disabled={
+              !checkValidationButton(
+                error,
+                fName,
+                lName,
+                phone,
+                eMail,
+                password,
+                confirmPassword
+              )
+            }
           />
         </div>
       </form>
