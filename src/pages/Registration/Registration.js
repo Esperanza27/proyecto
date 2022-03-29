@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 // defines
 import d from "../../common/defines";
@@ -18,7 +18,7 @@ import {
   PASSWORD_PLACEHOLDER,
   CONFIRM_PASSWORD_PLACEHOLDER,
   INIT,
-  INPUT_PASSWORD,
+  INPUT_PASSWORD, DONE, ERROR,
 } from "./Registration.defines";
 // components
 import Input from "../../common/components/input";
@@ -59,75 +59,163 @@ const Registration = () => {
 
   const setFirstName = useCallback((v) => {
     checkValidationInputs(
-      v,
-      FNAME_PLACEHOLDER,
-      FNAME_LABEL,
-      setFName,
-      d.TEXT_VALIDATION_REX,
-      setError
+      {
+        currentValue: v,
+        placeholder: FNAME_PLACEHOLDER,
+        setValue: (val) => setFName(val),
+        rex: d.TEXT_VALIDATION_REX,
+        setError: (err) => setError((cs) => {
+          return {
+            ...cs,
+            [FNAME_LABEL]: {
+              status: (cs[FNAME_LABEL].status = err?.status),
+              type: (cs[FNAME_LABEL].type = err?.type),
+            },
+          };
+        })
+      },
     );
   }, []);
 
   const setLastName = useCallback((v) => {
     checkValidationInputs(
-      v,
-      LNAME_PLACEHOLDER,
-      LNAME_LABEL,
-      setLName,
-      d.TEXT_VALIDATION_REX,
-      setError
+      {
+        currentValue: v,
+        placeholder: LNAME_PLACEHOLDER,
+        setValue: (val) => setLName(val),
+        rex: d.TEXT_VALIDATION_REX,
+        setError: (err) => setError((cs) => {
+          return {
+            ...cs,
+            [LNAME_LABEL]: {
+              status: (cs[LNAME_LABEL].status = err?.status),
+              type: (cs[LNAME_LABEL].type = err?.type),
+            },
+          };
+        })
+      }
     );
   }, []);
 
   const setTelephone = useCallback((v) => {
     checkValidationInputs(
-      v,
-      PHONE_PLACEHOLDER,
-      PHONE_LABEL,
-      setPhone,
-      d.TELEPHONE_VALIDATION_REX,
-      setError
+      {
+        currentValue: v,
+        placeholder: PHONE_PLACEHOLDER,
+        setValue: (val) => setPhone(val),
+        rex: d.TELEPHONE_VALIDATION_REX,
+        setError: (err) => setError((cs) => {
+          return {
+            ...cs,
+            [PHONE_LABEL]: {
+              status: (cs[PHONE_LABEL].status = err?.status),
+              type: (cs[PHONE_LABEL].type = err?.type),
+            },
+          };
+        })
+      }
     );
   }, []);
 
   const setEmail = useCallback((v) => {
     checkValidationInputs(
-      v,
-      EMAIL_PLACEHOLDER,
-      EMAIL_LABEL,
-      setEMail,
-      d.EMAIL_VALIDATION_REX,
-      setError
+      {
+        currentValue: v,
+        placeholder: EMAIL_PLACEHOLDER,
+        setValue: (val) => setEMail(val),
+        rex: d.EMAIL_VALIDATION_REX,
+        setError: (err) => setError((cs) => {
+          return {
+            ...cs,
+            [EMAIL_LABEL]: {
+              status: (cs[EMAIL_LABEL].status = err?.status),
+              type: (cs[EMAIL_LABEL].type = err?.type),
+            },
+          };
+        })
+      }
     );
   }, []);
 
   const setPsw = useCallback((v) => {
+
     checkValidationInputs(
-      v,
-      PASSWORD_PLACEHOLDER,
-      PASSWORD_LABEL,
-      setPassword,
-      d.PASSWORD_VALIDATION_REX,
-      setError
+      {
+        currentValue: v,
+        placeholder: PASSWORD_PLACEHOLDER,
+        setValue: (val) => setPassword(val),
+
+        rex: d.PASSWORD_VALIDATION_REX,
+        setError: (err) => setError((cs) => {
+          return {
+            ...cs,
+            [PASSWORD_LABEL]: {
+              status: (cs[PASSWORD_LABEL].status = err?.status),
+              type: (cs[PASSWORD_LABEL].type = err?.type),
+            },
+          };
+        })
+      }
     );
   }, []);
 
   const setConfirmPsw = useCallback((v) => {
+    console.log(v);
+    console.log(password);
+    console.log(v !== password);
     checkValidationInputs(
-      v,
-      CONFIRM_PASSWORD_PLACEHOLDER,
-      CONFIRM_PASSWORD_LABEL,
-      setConfirmPassword,
-      d.PASSWORD_VALIDATION_REX,
-      setError
+      {
+        currentValue: v,
+        placeholder: CONFIRM_PASSWORD_PLACEHOLDER,
+        setValue: (val) => setConfirmPassword(val),
+        rex: d.PASSWORD_VALIDATION_REX,
+        setError: (err) => setError((cs) => {
+          return {
+            ...cs,
+            [CONFIRM_PASSWORD_LABEL]: {
+              status: (cs[CONFIRM_PASSWORD_LABEL].status = err?.status === DONE && error[PASSWORD_LABEL].status === DONE && v === password ? DONE : ERROR),
+              type: (cs[CONFIRM_PASSWORD_LABEL].type = v !== password && 1),
+            },
+          };
+        })
+      }
     );
-  }, []);
+  }, [password]);
+
+  useEffect(() => {
+    console.log(password !== confirmPassword);
+    if (password !== confirmPassword || error[PASSWORD_LABEL].status === ERROR) {
+      setError(((cs) => {
+          return {
+            ...cs,
+            [CONFIRM_PASSWORD_LABEL]: {
+              status: (cs[CONFIRM_PASSWORD_LABEL].status = ERROR),
+              type: 1,
+            },
+          };
+        })
+      )
+    } else {
+      setError(((cs) => {
+          return {
+            ...cs,
+            [CONFIRM_PASSWORD_LABEL]: {
+              status: (cs[CONFIRM_PASSWORD_LABEL].status = DONE),
+              type: 0,
+            },
+          };
+        })
+      )
+    }
+  }, [password, confirmPassword, error[PASSWORD_LABEL].status]);
 
   const sub = (e) => {
     console.log(fName);
     console.log(lName);
     console.log(phone);
     console.log(eMail);
+    console.log(password);
+    console.log(confirmPassword);
     e.preventDefault();
   };
 
@@ -200,6 +288,7 @@ const Registration = () => {
         />
         {/* ACCORDION */}
         <Accordion />
+
         <div className="registration-submit">
           <input
             className={`registration-input ${

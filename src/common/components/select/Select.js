@@ -10,7 +10,7 @@ const Select = ({ list, label }) => {
     console.log(value);
   };
   return (
-    <div  className="select-container">
+    <div className="select-container">
       <label>{label}</label>
       <select
         value={selectValue}
@@ -20,8 +20,8 @@ const Select = ({ list, label }) => {
         <option value="" disabled selected>
           Select a city..
         </option>
-        {list.map((v) => {
-          return <option value={v?.value}>{v?.label}</option>;
+        {list.map((v, i) => {
+          return <option key={i + v?.value} value={v?.value}>{v?.label}</option>;
         })}
       </select>
     </div>

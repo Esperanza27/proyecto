@@ -9,46 +9,58 @@ import {
   ERROR,
 } from "../Registration.defines";
 
-export const checkValidationInputs = (
-  v,
-  placeholder,
-  idLabel,
-  setValue,
-  rex,
-  setError
-) => {
-  if (v.match(rex) != null) {
+export const checkValidationInputs = (props) => {
+  const {
+    currentValue,
+    placeholder,
+    setValue,
+    rex,
+    setError
+  } = props;
+
+  if (currentValue.match(rex) != null) {
     console.log("if");
-    setValue(v);
-    setError((cs) => {
-      const clone = {};
-      cs[idLabel].status = DONE;
-      cs[idLabel].type = 0;
-      return cs;
+    setValue(currentValue);
+    setError({
+      status: DONE,
+      type: 0
     });
-  } else if (v.match(rex) === null && v.length === 0) {
+    /*setError((cs) => {
+      cs[label].status = DONE;
+      cs[label].type = 0;
+      return cs;
+    });*/
+  } else if (currentValue.match(rex) === null && currentValue.length === 0) {
     console.log("else if");
     setValue(placeholder);
-    setError((cs) => {
+    setError({
+      status: ERROR,
+      type: 0
+    });
+    /*setError((cs) => {
       return {
         ...cs,
-        [idLabel]: {
-          status: (cs[idLabel].status = ERROR),
-          type: (cs[idLabel].type = 0),
+        [label]: {
+          status: (cs[label].status = ERROR),
+          type: (cs[label].type = 0),
         },
       };
-    });
+    });*/
   } else {
     setValue(placeholder);
-    setError((cs) => {
+    setError({
+      status: ERROR,
+      type: 1
+    });
+    /*setError((cs) => {
       return {
         ...cs,
-        [idLabel]: {
-          status: (cs[idLabel].status = ERROR),
-          type: (cs[idLabel].type = 1),
+        [label]: {
+          status: (cs[label].status = ERROR),
+          type: (cs[label].type = 1),
         },
       };
-    });
+    });*/
   }
 };
 
