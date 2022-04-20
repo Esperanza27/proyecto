@@ -1,11 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-import Registration from './pages/Registration';
+import Routing from "./common/routing";
+import Navbar from './common/navbar';
+
 
 function App() {
   return (
     <div>
-      <Registration/>
+      <Navbar/>
+      <Routing/>
+    
     </div>
   );
 }
