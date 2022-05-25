@@ -1,0 +1,15 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    margin: 5px;
+    padding: 10px;
+    .button-details{
+       background-color: antiquewhite;
+       width: 150px;
+       height: 80px;
+       border-radius: 15px;
+    }
+}

@@ -12,6 +12,16 @@ const Navbar = () => {
         <li>
           <Link className="link" to="/registration">Registration</Link>
         </li>
+        <li>
+          <Link className="link" to="/torte">Torte</Link>
+        </li>
+        <li>
+          <Link className="link" to="/details">Details</Link>
+        </li>
+        <li>
+          <Link className="link" to="/showcase">Showcase</Link>
+        </li>
+        
       </ul>
     </nav>
   );

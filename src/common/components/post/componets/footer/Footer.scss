@@ -1,0 +1,72 @@
+.container {
+  height: 30%;
+  width: 100%;
+  background-color: red;
+  .container-visualization {
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+    width: 100%;
+    background-color: yellow;
+    .number-like {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 30px;
+      height: 100%;
+      width: 40%;
+      background-color: rgba(218, 109, 7, 0.869);
+      .like{
+        display: flex;
+        flex-direction: row;
+        height: 25px;
+        width: 25px;
+      }
+    }
+    .number-coments {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 30px;
+      height: 100%;
+      width: 60%;
+      background-color: rgb(30, 210, 237);
+    }
+  }
+  .container-button {
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+    width: 100%;
+    background-color: lawngreen;
+    .mi-piace {
+      .info-button {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+      height: 100%;
+      width: 33%;
+      background-color: rgb(41, 22, 181);
+    }
+    .comenta {
+      .info-button {
+        display: flex;
+        flex-direction: row;
+      }
+      height: 100%;
+      width: 34%;
+      background-color: rgb(229, 132, 246);
+    }
+    .condivide {
+      .info-button {
+        display: flex;
+        flex-direction: row;
+      }
+      height: 100%;
+      width: 33%;
+      background-color: rgb(161, 36, 102);
+    }
+  }
+}
