@@ -1,13 +1,11 @@
-.container {
-  height: 30%;
-  width: 100%;
-  background-color: red;
+.container-footer {
+  padding: 8px;
+
   .container-visualization {
     display: flex;
     flex-direction: row;
-    height: 50%;
     width: 100%;
-    background-color: yellow;
+
     .number-like {
       display: flex;
       flex-direction: row;
@@ -15,8 +13,8 @@
       gap: 30px;
       height: 100%;
       width: 40%;
-      background-color: rgba(218, 109, 7, 0.869);
-      .like{
+
+      .like {
         display: flex;
         flex-direction: row;
         height: 25px;
@@ -31,42 +29,38 @@
       gap: 30px;
       height: 100%;
       width: 60%;
-      background-color: rgb(30, 210, 237);
     }
   }
+
+  .line-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 1px;
+    margin: 8px;
+
+    .line {
+      width: 90%;
+      background-color: #ccc5c5;
+    }
+  }
+
   .container-button {
     display: flex;
     flex-direction: row;
-    height: 50%;
-    width: 100%;
-    background-color: lawngreen;
-    .mi-piace {
+
+    .button {
+      width: 100%;
+      border-style: inherit;
+      background-color: white;
+
       .info-button {
         display: flex;
-        flex-direction: row;
         justify-content: center;
+        height: 50px;
+        align-items: center;
+        gap: 5px;
       }
-      height: 100%;
-      width: 33%;
-      background-color: rgb(41, 22, 181);
-    }
-    .comenta {
-      .info-button {
-        display: flex;
-        flex-direction: row;
-      }
-      height: 100%;
-      width: 34%;
-      background-color: rgb(229, 132, 246);
-    }
-    .condivide {
-      .info-button {
-        display: flex;
-        flex-direction: row;
-      }
-      height: 100%;
-      width: 33%;
-      background-color: rgb(161, 36, 102);
     }
   }
 }

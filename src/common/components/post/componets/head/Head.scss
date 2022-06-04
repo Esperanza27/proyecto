@@ -1,64 +1,59 @@
-.container {
-  height: 20%;
-  width:100%;
-  background-color: white;
+.container-head {
+  padding: 6px;
 
   .sub-container {
     height: 70%;
     width: 100%;
-    background-color: brown;
     display: flex;
     flex-direction: row;
 
     .img-container {
       height: 100%;
       width: 60%;
-      background-color: aquamarine;
       display: flex;
       flex-direction: row;
+      align-items: center;
 
       .imagen {
-  
-        height: 100%;
-        width: 20%;
-        background-color: green;
-        
-        }
+        display: flex;
+        margin: 8px;
+        border-radius: 50px;
+        gap: 10px;
+        height: 80px;
+        width: 80px;
       }
-      .title {
-        height: 100%;
-        width: 80%;
-        background-color: fuchsia;
-        .info{
+    }
+    .title {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 80%;
+
+      .info {
+        display: flex;
+        flex-direction: row;
+
+        .iconGlobo {
           display: flex;
           flex-direction: row;
-        
-            .iconGlobo{
-              display: flex;
-              flex-direction: row;
-              height: 15px;
-              width: 15px;
-            }
-          
+          height: 15px;
+          width: 15px;
         }
       }
     }
+  }
 
-    .chiusura {
-      display:flex;
-justify-content: right;
-      height: 100%;
-      width: 40%;
-      background-color: mediumslateblue;
+  .chiusura {
+    display: flex;
+    justify-content: right;
+    height: 100%;
+    width: 40%;
+  }
 
-    }
-  
   .description {
     display: flex;
-   align-items: center;
+    align-items: center;
     height: 30%;
     width: 100%;
-    background-color: darkolivegreen;
-  
   }
 }

@@ -1,25 +1,25 @@
 import "./Head.scss";
-import iconMondo from "../../../../icon/iconMondo.jpg";
-import iconGlobo from "../../../../icon/iconGlobo.png";
-const Head = () => {
+
+const Head = ({details}) => {
+  console.log(details.title);
   return (
-    <div className="container">
+    <div className="container-head">
       <div className="sub-container">
         <div className="img-container">
-          <img className="imagen" src={iconMondo} alt="hello"></img>
+          <img className="imagen" src={details?.iconLogo} alt="hello"></img>
           <div className="title">
-            Ecorevolución
+           <h2>{ details?.title }</h2> 
             <div className="info">
-              <h3>19 h</h3>
-              <img src={iconGlobo} alt="hello"></img>
+              <div>{ details?.ora }</div>
+              <img src={details?.iconGlobo} alt="hello"></img>
             </div>
           </div>
         </div>
         <div className="chiusura">
-          <h1>...</h1>
+          <h1>{details?.chiusura}</h1>
         </div>
       </div>
-      <div className="description">#Ecorevolución</div>
+      <div className="description">{details?.description}</div>
     </div>
   );
 };
