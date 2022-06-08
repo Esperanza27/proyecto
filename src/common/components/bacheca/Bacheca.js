@@ -1,26 +1,31 @@
 import { useState, useEffect } from "react";
 import Post from "../post/Post";
+import Stories from "../stories/Stories";
 
 // styles
 import "./Bacheca.scss";
 
 // services
 import postService from "./services/postService";
+import storiesServices from "../stories/services/storiesServices";
 
 const Bacheca = () => {
   const [postsList, setPostsList] = useState();
+  const [storyList, setStoryList] = useState();
 
   useEffect(() => {
     postService({ setPost: (post) => setPostsList(post) });
-
+    storiesServices({ setStory: (story) => setStoryList(story) });
   }, []);
 
-  console.log(postsList);
+  console.log(storyList);
 
-  
   return (
     <div className="container-bacheca">
-      {postsList ? <PostList postsList={postsList} /> : <Placeholder />}
+      <span>{storyList ? <Stories storyList={storyList} /> : <Placeholder />}</span>
+       <span>
+        {postsList ? <PostList postsList={postsList} /> : <Placeholder />}
+      </span>
     </div>
   );
 };
