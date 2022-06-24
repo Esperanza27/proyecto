@@ -21,5 +21,15 @@ const data = [
     logo: iconLike,
     description: "Description2",
   },
+  {
+    img: abejaPost,
+    logo: iconLike,
+    description: "Description3",
+  },
+  {
+    img: abejaPost,
+    logo: iconLike,
+    description: "Description4",
+  },
 ];
 export default data;

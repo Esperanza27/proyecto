@@ -1,0 +1,11 @@
+.stories-container {
+    /* width: 500px; */
+    overflow: hidden;
+    .stories {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+}

@@ -1,10 +1,11 @@
 .container-footer {
   padding: 8px;
+  width: 400px;
 
   .container-visualization {
     display: flex;
     flex-direction: row;
-    width: 100%;
+   
 
     .number-like {
       display: flex;
@@ -12,13 +13,13 @@
       align-items: center;
       gap: 30px;
       height: 100%;
-      width: 40%;
+      width: 30%;
 
       .like {
         display: flex;
         flex-direction: row;
-        height: 25px;
-        width: 25px;
+        height: 20px;
+        width: 20px;
       }
     }
     .number-coments {
@@ -28,7 +29,7 @@
       align-items: center;
       gap: 30px;
       height: 100%;
-      width: 60%;
+      
     }
   }
 
@@ -48,6 +49,7 @@
   .container-button {
     display: flex;
     flex-direction: row;
+    width: 500px;
 
     .button {
       width: 100%;

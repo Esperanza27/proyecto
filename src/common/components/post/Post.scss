@@ -1,5 +1,17 @@
 .post-container {
     height: auto;
-    width: 500px;
+    width: 400px;
     background-color: white;
+    @media screen and (max-width: 992px) {
+        .container-bacheca {
+            width:0%
+        }
+      }
+      
+      // MOBILE
+      @media screen and (max-width: 600px) {
+          .container-bacheca {
+            width:0%;
+            }
+      }
 }

@@ -1,21 +1,19 @@
 import "./Stories.scss";
+import PostStory from "./components/postStory/PostStory";
 
 const Stories = ({ storyList = [] }) => {
   return (
-    <>
-      {storyList.map((story, i) => {
-        return (
-          <div key={i}>
-            <PostStory story={story} />
-          </div>
-        );
-      })}
-    </>
+    <div className="stories-container">
+      <div className="stories">
+        {storyList.map((story, i) => {
+          return (
+            <div key={i}>
+              <PostStory story={story} />
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 };
 export default Stories;
-
-const PostStory = ({ story }) => {
-  console.log("story", story);
-  return <div>post story</div>;
-};

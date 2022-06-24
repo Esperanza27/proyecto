@@ -26,7 +26,7 @@ const data = [
     footer: {
       iconFaccia: iconFaccia,
       iconLike: iconLike,
-      numberLike: "2,8 mil",
+      numberLike: 5,
       infoComent: "70 comentarios 776 veces compartido",
       iconMiPiace: iconMiPiace,
       miPiace: "Me Gusta",
@@ -52,7 +52,7 @@ const data = [
     footer: {
       iconFaccia: iconFaccia,
       iconLike: iconLike,
-      numberLike: "3,5 mil",
+      numberLike: 100000,
       infoComent: "80 comentarios 566 veces compartido",
       iconMiPiace: iconMiPiace,
       miPiace: "Me Gusta",
@@ -78,7 +78,7 @@ const data = [
     footer: {
       iconFaccia: iconFaccia,
       iconLike: iconLike,
-      numberLike: "2,8 mil",
+      numberLike: 15,
       infoComent: "70 comentarios 776 veces compartido",
       iconMiPiace: iconMiPiace,
       miPiace: "Me Gusta",

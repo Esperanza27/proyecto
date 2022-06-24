@@ -1,4 +1,5 @@
 import "./Footer.scss";
+import getNumberFormatted from "../../../../../common/utils/getNumberFormatted"
 
 const Footer = ({details}) => {
   
@@ -10,7 +11,7 @@ const Footer = ({details}) => {
             <img src={details?.iconFaccia} alt="hello faccia"></img>
             <img src={details?.iconLike} alt="hello "></img>
           </div>
-          <div>{details?.numberLike}</div>
+          <div>{getNumberFormatted(details?.numberLike)}</div>
         </div>
         <div className="number-coments">
           <div>{details?.infoComent}</div>

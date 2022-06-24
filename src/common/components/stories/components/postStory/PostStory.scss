@@ -1,0 +1,20 @@
+.post-story {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  width: 120px;
+  background-size: 100% 100%;
+  &-logo {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    top: 5px;
+    left: 5px;
+  }
+  &-desc {
+    position: relative;
+    top: 121px;
+    left: 5px;
+  }
+}
