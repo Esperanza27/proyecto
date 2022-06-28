@@ -1,4 +1,3 @@
-
 // DESKTOP
 .container-bacheca {
   display: flex;
@@ -7,19 +6,4 @@
   gap: 13px;
   background-color: #e5e0e0;
   padding: 10px;
-}
-
-
-// TABLET
-@media screen and (max-width: 992px) {
-  .container-bacheca {
-    background-color: red;
-  }
-}
-
-// MOBILE
-@media screen and (max-width: 600px) {
-    .container-bacheca {
-        background-color: green;
-      }
 }

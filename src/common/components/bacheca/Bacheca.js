@@ -18,13 +18,31 @@ const Bacheca = () => {
     storiesServices({ setStory: (story) => setStoryList(story) });
   }, []);
 
+  const updateIlike = (id) => {
+    console.log(id);
+    const newIlike = postsList.map((post) => {
+      if (post.footer.id === id) {
+        return {
+          ...post,
+          footer: {...post.footer,status: !post.footer.status,
+            numberLike: !post.footer.status ? post.footer.numberLike + 1 : post.footer.numberLike - 1,}
+          
+        };
+      } else {
+        return post;
+      }
+    });
+    setPostsList(newIlike);
+
+    // --> servizio newIlike
+  };
   console.log(storyList);
 
   return (
     <div className="container-bacheca">
       <span>{storyList ? <Stories storyList={storyList} /> : <Placeholder />}</span>
        <span>
-        {postsList ? <PostList postsList={postsList} /> : <Placeholder />}
+        {postsList ? <PostList postsList={postsList} updateIlike={updateIlike}/> : <Placeholder />}
       </span>
     </div>
   );
@@ -35,13 +53,13 @@ const Placeholder = () => {
   return <h1>Loading...</h1>;
 };
 
-const PostList = ({ postsList = [] }) => {
+const PostList = ({ postsList = [], updateIlike}) => {
   return (
     <>
       {postsList.map((post, i) => {
         return (
           <div key={i}>
-            <Post post={post} />
+            <Post post={post} updateIlike={updateIlike}/>
           </div>
         );
       })}

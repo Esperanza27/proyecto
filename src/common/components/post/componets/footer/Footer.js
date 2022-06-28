@@ -1,7 +1,7 @@
 import "./Footer.scss";
 import getNumberFormatted from "../../../../../common/utils/getNumberFormatted"
 
-const Footer = ({details}) => {
+const Footer = ({details, updateIlike}) => {
   
     return (
     <div className="container-footer">
@@ -23,22 +23,23 @@ const Footer = ({details}) => {
       </div>
 
       <div className="container-button">
-        <button className="button">
+        <button className="button" onClick={() => updateIlike(details?.id)}
+        style={{ backgroundColor: details.status ? 'blue' : 'white' }}>
           <div className="info-button">
-            <img src={details?.iconMiPiace} alt="hello A"></img>
-            <h2>{details?.miPiace}</h2>
+            <img src={details?.iconMiPiace} alt="hello A" style={{ width:"30px" }}></img>
+            <h3>{details?.miPiace}</h3>
           </div>
         </button>
         <button className="button">
           <div className="info-button">
-            <img src={details?.iconCommenti} alt="hello B"></img>
-            <h2>{details?.coment}</h2>
+            <img src={details?.iconCommenti} alt="hello B" style={{ width:"30px" }}></img>
+            <h3>{details?.coment}</h3>
           </div>{" "}
         </button>
         <button className="button">
           <div className="info-button">
-            <img src={details?.iconFrecciaCondivizione} alt="hello C"></img>
-            <h2>{details?.condivide}</h2>
+            <img src={details?.iconFrecciaCondivizione} alt="hello C" style={{ width:"30px" }}></img>
+            <h3>{details?.condivide}</h3>
           </div>{" "}
         </button>
       </div>

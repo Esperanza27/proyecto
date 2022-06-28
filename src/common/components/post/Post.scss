@@ -1,17 +1,18 @@
 .post-container {
-    height: auto;
-    width: 400px;
-    background-color: white;
-    @media screen and (max-width: 992px) {
-        .container-bacheca {
-            width:0%
-        }
-      }
-      
-      // MOBILE
-      @media screen and (max-width: 600px) {
-          .container-bacheca {
-            width:0%;
-            }
-      }
+  height: auto;
+  width: 400px;
+  background-color: white;
+}
+
+@media screen and (max-width: 992px) {
+  .post-container {
+    width: 100%;
+  }
+}
+
+// MOBILE
+@media screen and (max-width: 600px) {
+  .post-container {
+    width: 100%;
+  }
 }
