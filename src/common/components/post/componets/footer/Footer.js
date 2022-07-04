@@ -1,7 +1,7 @@
 import "./Footer.scss";
 import getNumberFormatted from "../../../../../common/utils/getNumberFormatted"
 
-const Footer = ({details, updateIlike}) => {
+const Footer = ({details, updateIlike,doComent}) => {
   
     return (
     <div className="container-footer">
@@ -30,7 +30,7 @@ const Footer = ({details, updateIlike}) => {
             <h3>{details?.miPiace}</h3>
           </div>
         </button>
-        <button className="button">
+        <button className="button" onClick={doComent}>
           <div className="info-button">
             <img src={details?.iconCommenti} alt="hello B" style={{ width:"30px" }}></img>
             <h3>{details?.coment}</h3>
